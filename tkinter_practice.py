@@ -95,15 +95,33 @@ class MyGUI:
         # Monthly Cash FLow
         self.labelcf = Label(self.guiframe, text="Monthly Cash Flow", font=('Ariel', 18, 'underline'))
         self.labelcf.grid(row=0, column=1, sticky=W+E)
-        self.labelmc = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'))
-        self.labelmc.grid(row=2, column=1, rowspan = 6, sticky=W+E+N+S)
+        self.labelmc = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'), background='grey')
+        self.labelmc.grid(row=2, column=1, rowspan = 7, sticky=W+E+N+S)
 
         # Cash on Cash ROI
+        self.label12 = Label(self.guiframe, text="ROI", font=('Ariel', 18, 'underline'))
+        self.label12.grid(row=9, column=1, sticky=W+E)
+        self.label13 = Label(self.guiframe, text="Down Payment", font=('Ariel', 18))
+        self.label13.grid(row=10, column=1, sticky=W+E)
+        self.entry13 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry13.grid(row=11, column=1, sticky=W+E)
+        self.label14 = Label(self.guiframe, text="Closing Costs", font=('Ariel', 18))
+        self.label14.grid(row=12, column=1, sticky=W+E)
+        self.entry14 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry14.grid(row=13, column=1, sticky=W+E)
+        self.label15 = Label(self.guiframe, text="Rehab Budget", font=('Ariel', 18))
+        self.label15.grid(row=14, column=1, sticky=W+E)
+        self.entry15 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry15.grid(row=15, column=1, sticky=W+E)
+        self.label16 = Label(self.guiframe, text="Misc Expenses", font=('Ariel', 18))
+        self.label16.grid(row=16, column=1, sticky=W+E)
+        self.entry16 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry16.grid(row=17, column=1, sticky=W+E)
         
-
-
-
-        
+        self.labelr = Label(self.guiframe, text="ROI", font=('Ariel', 18, 'underline'))
+        self.labelr.grid(row=18, column=1, sticky=W+E)
+        self.labelr = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'), background='grey')
+        self.labelr.grid(row=19, column=1, rowspan = 7, sticky=W+E+N+S)
 
 
         self.button = Button(self.root, text="Calculate ROI", font=('Arial',18), command=self.get_data)
@@ -158,4 +176,30 @@ class MyGUI:
             bg = "red"
         self.labelmc.config(text=monthly_cash_flow, font= ('Helvetica 30'), background=bg)
 
+        dp_e = self.entry13.get()
+        close_e = self.entry14.get()
+        rehab_e = self.entry15.get()
+        misc_e = self.entry16.get()
+
+        list_of_sinexpenses = [dp_e, close_e, rehab_e, misc_e]
+        num_list_of_sinexpenses = []
+
+        for x in list_of_sinexpenses:
+            if x == "":
+                num_list_of_sinexpenses.append(0)                
+            else:
+                num_list_of_sinexpenses.append(int(x))
+        
+        sinexpenses = sum(num_list_of_expenses)
+        if sinexpenses:
+            total_roi = (ref_mcf*12) / sinexpenses
+
+            if total_roi >= 0:
+                total_roi = f"{total_roi}%"
+                bg = "green"
+            else:
+                total_roi *= -1
+                total_roi = f"{total_roi}%"
+                bg = "red"
+            self.labelr.config(text=total_roi, font= ('Helvetica 20'), background=bg)
 MyGUI()
