@@ -203,4 +203,5 @@ class MyGUI:
                 bg = "red"
             self.labelr.config(text=total_roi, font= ('Helvetica 20'), background=bg)
         self.root.mainloop()
+        # Idk
 MyGUI()
