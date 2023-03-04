@@ -168,13 +168,13 @@ class MyGUI:
         ref_mcf = monthly_cash_flow
         bg = ""
         if monthly_cash_flow >= 0:
-            monthly_cash_flow = f"${monthly_cash_flow}"
+            monthly_cash_flow = f"You're making ${monthly_cash_flow} a month."
             bg = "green"
         else:
             monthly_cash_flow *= -1
-            monthly_cash_flow = f"-${monthly_cash_flow}"
+            monthly_cash_flow = f"You're losing -${monthly_cash_flow} a month."
             bg = "red"
-        self.labelmc.config(text=monthly_cash_flow, font= ('Helvetica 30'), background=bg)
+        self.labelmc.config(text=monthly_cash_flow, font= ('Helvetica 25'), background=bg)
 
         dp_e = self.entry13.get()
         close_e = self.entry14.get()
@@ -190,16 +190,17 @@ class MyGUI:
             else:
                 num_list_of_sinexpenses.append(int(x))
         
-        sinexpenses = sum(num_list_of_expenses)
+        sinexpenses = sum(num_list_of_sinexpenses)
         if sinexpenses:
             total_roi = (ref_mcf*12) / sinexpenses
 
             if total_roi >= 0:
-                total_roi = f"{total_roi}%"
+                total_roi = f"{total_roi:.2f}%"
                 bg = "green"
             else:
                 total_roi *= -1
-                total_roi = f"{total_roi}%"
+                total_roi = f"-{total_roi:.2f}%"
                 bg = "red"
             self.labelr.config(text=total_roi, font= ('Helvetica 20'), background=bg)
+        self.root.mainloop()
 MyGUI()
