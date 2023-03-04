@@ -62,11 +62,41 @@ class MyGUI:
         self.entry5 = Entry(self.guiframe, font =('Arial', 10))
         self.entry5.grid(row=11, column=0, sticky=W+E)
 
+        self.label6 = Label(self.guiframe, text="Lawn/Snow Care", font=('Ariel', 18))
+        self.label6.grid(row=12, column=0, sticky=W+E)
+        self.entry6 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry6.grid(row=13, column=0, sticky=W+E)
+
+        self.label7 = Label(self.guiframe, text="Vacancy", font=('Ariel', 18))
+        self.label7.grid(row=14, column=0, sticky=W+E)
+        self.entry7 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry7.grid(row=15, column=0, sticky=W+E)
+
+        self.label8 = Label(self.guiframe, text="Repairs", font=('Ariel', 18))
+        self.label8.grid(row=16, column=0, sticky=W+E)
+        self.entry8 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry8.grid(row=17, column=0, sticky=W+E)
+
+        self.label9 = Label(self.guiframe, text="CapEx", font=('Ariel', 18))
+        self.label9.grid(row=18, column=0, sticky=W+E)
+        self.entry9 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry9.grid(row=19, column=0, sticky=W+E)
+
+        self.label10 = Label(self.guiframe, text="Property Management", font=('Ariel', 18))
+        self.label10.grid(row=20, column=0, sticky=W+E)
+        self.entry10 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry10.grid(row=21, column=0, sticky=W+E)
+
+        self.label11 = Label(self.guiframe, text="Mortgage", font=('Ariel', 18))
+        self.label11.grid(row=22, column=0, sticky=W+E)
+        self.entry11 = Entry(self.guiframe, font =('Arial', 10))
+        self.entry11.grid(row=23, column=0, sticky=W+E)
+
         # Monthly Cash FLow
-        self.label6 = Label(self.guiframe, text="Monthly Cash Flow", font=('Ariel', 18, 'underline'))
-        self.label6.grid(row=0, column=1, sticky=W+E)
-        self.label7 = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'))
-        self.label7.grid(row=1, column=1, sticky=W+E)
+        self.labelcf = Label(self.guiframe, text="Monthly Cash Flow", font=('Ariel', 18, 'underline'))
+        self.labelcf.grid(row=0, column=1, sticky=W+E)
+        self.labelmc = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'))
+        self.labelmc.grid(row=2, column=1, rowspan = 6, sticky=W+E+N+S)
 
         # Cash on Cash ROI
         
@@ -80,11 +110,11 @@ class MyGUI:
         self.button.pack(padx=20, pady=20)
         self.root.mainloop()
 
-    def show_message(self):
-        print("Hello World")
+    # def show_message(self):
+    #     print("Hello World")
 
-    def button_equal(self):
-        pass
+    # def button_equal(self):
+    #     pass
 
     def get_data(self):
         #This part gets the information from each cell
@@ -94,12 +124,18 @@ class MyGUI:
             rental_income = int(self.entry1.get())
         
         tax_e = self.entry2.get()
-
         insurance_e = self.entry3.get()
         util_e = self.entry4.get()
         hoa_e = self.entry5.get()
+        lawn_e = self.entry6.get()
+        vac_e = self.entry7.get()
+        rep_e = self.entry8.get()
+        capex_e = self.entry9.get()
+        propmgmt_e = self.entry10.get()
+        mort_e = self.entry11.get()
+        
 
-        list_of_expenses = [tax_e, insurance_e, util_e, hoa_e]
+        list_of_expenses = [tax_e, insurance_e, util_e, hoa_e, lawn_e, vac_e, rep_e, capex_e, propmgmt_e, mort_e]
         num_list_of_expenses = []
 
         for x in list_of_expenses:
@@ -110,6 +146,16 @@ class MyGUI:
         
         expenses = sum(num_list_of_expenses)
         monthly_cash_flow = rental_income - expenses
-        self.label7.config(text= monthly_cash_flow, font= ('Helvetica 13'))
+        #ref_mcf is to use in final calculation
+        ref_mcf = monthly_cash_flow
+        bg = ""
+        if monthly_cash_flow >= 0:
+            monthly_cash_flow = f"${monthly_cash_flow}"
+            bg = "green"
+        else:
+            monthly_cash_flow *= -1
+            monthly_cash_flow = f"-${monthly_cash_flow}"
+            bg = "red"
+        self.labelmc.config(text=monthly_cash_flow, font= ('Helvetica 30'), background=bg)
 
 MyGUI()
