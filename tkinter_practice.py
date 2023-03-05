@@ -1,12 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 
-# root.geometry("1500x1500")
-# root.title("My First GUI")
-
-
-
-# root.mainloop()
 
 class MyGUI:
 
@@ -20,11 +14,6 @@ class MyGUI:
 
         self.label = Label(self.root, text="ROI Calculator", font=('Ariel', 18,'underline'))
         self.label.pack()
-
-        # content = Frame(self.root)
-        # frame = Frame(content, borderwidth=5, relief="ridge", width=200, height=100)
-        # content.grid(column=0, row=0, sticky=(N, S, E, W))
-        # frame.grid(column=0, row=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
         
         self.guiframe = Frame(self.root, padx=5, pady=5)
         self.guiframe.columnconfigure(0, weight = 1, pad=5)
@@ -33,7 +22,7 @@ class MyGUI:
         # Income
         self.labelh1 = Label(self.guiframe, text="Monthly Income", font=('Ariel', 18, 'underline'))
         self.labelh1.grid(row=0, column=0, sticky=W+E)
-
+        ## Rental Income
         self.label1 = Label(self.guiframe, text="Rental Income", font=('Ariel', 18))
         self.label1.grid(row=1, column=0, sticky=W+E)
         self.entry1 = Entry(self.guiframe, font =('Arial', 10))
@@ -41,64 +30,65 @@ class MyGUI:
         # Expenses
         self.labelh2 = Label(self.guiframe, text="Expenses", font=('Ariel', 18, 'underline'))
         self.labelh2.grid(row=3, column=0, sticky=W+E)
-        
+        ## Tax Expense
         self.label2 = Label(self.guiframe, text="Tax", font=('Ariel', 18))
         self.label2.grid(row=4, column=0, sticky=W+E)
         self.entry2 = Entry(self.guiframe, font =('Arial', 10))
         self.entry2.grid(row=5, column=0, sticky=W+E)
-
+        ## Insurance Expense
         self.label3 = Label(self.guiframe, text="Insurance", font=('Ariel', 18))
         self.label3.grid(row=6, column=0, sticky=W+E)
         self.entry3 = Entry(self.guiframe, font =('Arial', 10))
         self.entry3.grid(row=7, column=0, sticky=W+E)
-
+        ## Utilities Expense
         self.label4 = Label(self.guiframe, text="Utilities", font=('Ariel', 18))
         self.label4.grid(row=8, column=0, sticky=W+E)
         self.entry4 = Entry(self.guiframe, font =('Arial', 10))
         self.entry4.grid(row=9, column=0, sticky=W+E)
-
+        ## HOA Expense
         self.label5 = Label(self.guiframe, text="HOA Fees", font=('Ariel', 18))
         self.label5.grid(row=10, column=0, sticky=W+E)
         self.entry5 = Entry(self.guiframe, font =('Arial', 10))
         self.entry5.grid(row=11, column=0, sticky=W+E)
-
+        ## Lawn/Snow Expense
         self.label6 = Label(self.guiframe, text="Lawn/Snow Care", font=('Ariel', 18))
         self.label6.grid(row=12, column=0, sticky=W+E)
         self.entry6 = Entry(self.guiframe, font =('Arial', 10))
         self.entry6.grid(row=13, column=0, sticky=W+E)
-
+        ## Vacancy Expense
         self.label7 = Label(self.guiframe, text="Vacancy", font=('Ariel', 18))
         self.label7.grid(row=14, column=0, sticky=W+E)
         self.entry7 = Entry(self.guiframe, font =('Arial', 10))
         self.entry7.grid(row=15, column=0, sticky=W+E)
-
+        ## Repairs Expense
         self.label8 = Label(self.guiframe, text="Repairs", font=('Ariel', 18))
         self.label8.grid(row=16, column=0, sticky=W+E)
         self.entry8 = Entry(self.guiframe, font =('Arial', 10))
         self.entry8.grid(row=17, column=0, sticky=W+E)
-
+        ## CapEX Expense
         self.label9 = Label(self.guiframe, text="CapEx", font=('Ariel', 18))
         self.label9.grid(row=18, column=0, sticky=W+E)
         self.entry9 = Entry(self.guiframe, font =('Arial', 10))
         self.entry9.grid(row=19, column=0, sticky=W+E)
-
+        ## Property Management Expense
         self.label10 = Label(self.guiframe, text="Property Management", font=('Ariel', 18))
         self.label10.grid(row=20, column=0, sticky=W+E)
         self.entry10 = Entry(self.guiframe, font =('Arial', 10))
         self.entry10.grid(row=21, column=0, sticky=W+E)
-
+        ## Mortgage Expense
         self.label11 = Label(self.guiframe, text="Mortgage", font=('Ariel', 18))
         self.label11.grid(row=22, column=0, sticky=W+E)
         self.entry11 = Entry(self.guiframe, font =('Arial', 10))
         self.entry11.grid(row=23, column=0, sticky=W+E)
 
-        # Monthly Cash FLow
+        # Monthly Cash FLow (Income - Expenses)
         self.labelcf = Label(self.guiframe, text="Monthly Cash Flow", font=('Ariel', 18, 'underline'))
         self.labelcf.grid(row=0, column=1, sticky=W+E)
         self.labelmc = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'), background='grey')
         self.labelmc.grid(row=2, column=1, rowspan = 7, sticky=W+E+N+S)
 
         # Cash on Cash ROI
+        ## Each of these cells are the initial investments
         self.label12 = Label(self.guiframe, text="ROI", font=('Ariel', 18, 'underline'))
         self.label12.grid(row=9, column=1, sticky=W+E)
         self.label13 = Label(self.guiframe, text="Down Payment", font=('Ariel', 18))
@@ -118,21 +108,17 @@ class MyGUI:
         self.entry16 = Entry(self.guiframe, font =('Arial', 10))
         self.entry16.grid(row=17, column=1, sticky=W+E)
         
+        # Return on Investment (Annual Cash Flow / Investments)
         self.labelr = Label(self.guiframe, text="ROI", font=('Ariel', 18, 'underline'))
         self.labelr.grid(row=18, column=1, sticky=W+E)
         self.labelr = Label(self.guiframe, text="", font=('Ariel', 18, 'underline'), background='grey')
         self.labelr.grid(row=19, column=1, rowspan = 7, sticky=W+E+N+S)
 
-
+        # Push this button to perform the final calculation
         self.button = Button(self.root, text="Calculate ROI", font=('Arial',18), command=self.get_data)
         self.button.pack(padx=20, pady=20)
         self.root.mainloop()
 
-    # def show_message(self):
-    #     print("Hello World")
-
-    # def button_equal(self):
-    #     pass
 
     def get_data(self):
         #This part gets the information from each cell
